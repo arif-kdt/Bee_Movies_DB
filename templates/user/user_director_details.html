@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+
+<div class="director-page">
+  <div class="director-shell">
+
+    <a href="{% url 'user:user_movies_list' %}" class="back-link">
+      <span class="back-arrow">←</span> Back to Movies
+    </a>
+
+    <!-- Director Profile -->
+    <article class="director-spread">
+
+      <div class="director-portrait-wrap">
+        {% if director.image %}
+        <img src="{{ director.image.url }}" alt="{{ director.name }}" class="director-portrait">
+        {% else %}
+        <img src="{% static 'images/default.jpg' %}" alt="{{ director.name }}" class="director-portrait">
+        {% endif %}
+      </div>
+
+      <div class="director-credits">
+        <p class="credit-eyebrow">Director</p>
+        <h1 class="director-name">{{ director.name }}</h1>
+
+        <div class="credit-sprocket" aria-hidden="true"></div>
+
+        {% if director.bio %}
+        <p class="director-bio">{{ director.bio }}</p>
+        {% endif %}
+      </div>
+
+    </article>
+
+    <!-- Filmography -->
+    {% if movies %}
+    <section class="shelf">
+      <h2 class="shelf-heading">Filmography</h2>
+      <div class="shelf-track">
+        {% for movie in movies %}
+        <a href="{% url 'user:user_movie_details' movie.id %}" class="shelf-item">
+          {% if movie.image %}
+          <img src="{{ movie.image.url }}" alt="{{ movie.name }}" class="shelf-poster">
+          {% else %}
+          <img src="{% static 'images/default.jpg' %}" alt="{{ movie.name }}" class="shelf-poster">
+          {% endif %}
+          <span class="shelf-caption">{{ movie.name }}</span>
+        </a>
+        {% endfor %}
+      </div>
+    </section>
+    {% else %}
+    <div class="empty-state">
+      <p>No movies found for this director.</p>
+    </div>
+    {% endif %}
+
+  </div>
+</div>
+{% endblock %}

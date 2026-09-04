@@ -1,0 +1,95 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bee Movies DB</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/@coreui/coreui@5.9.0/dist/css/coreui.min.css" rel="stylesheet"
+        integrity="sha384-9DZ6o3pJWcTwBR8W196XizUEf2kNMD35tkeyWqOB0yzml+nZrEe/13PMCpAIrT4r" crossorigin="anonymous">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/abab1a4bf2.js" crossorigin="anonymous"></script>
+
+    <!-- favcon icon -->
+    <link rel="icon" type="image/svg+xml" href="{% static 'favcon/favcon.svg' %}">
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/user.css' %}">
+
+</head>
+
+<body class="bgWrapper">
+    <nav class="navbar navbar-expand-lg navBar">
+        <div class="container-fluid navContainer">
+            <a class="navbar-brand navLink" href="{% url 'home' %}">BEE MOVIES DATABASE</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav navLinks">
+
+                    {% if user.is_authenticated %}
+
+                    <li class="nav-item">
+                        <a class="nav-link navLink {% if request.resolver_match.url_name == 'user_home' %}active{% endif %}"
+                            aria-current="page" href="{% url 'user:user_home' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link navLink {% if request.resolver_match.url_name == 'user_movies_list' %}active{% endif %}"
+                            href="{% url 'user:user_movies_list' %}">Movies</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle navLink  {% if request.resolver_match.url_name == 'change_password' %}active{% endif %}"
+                            href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Settings
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'accounts:logout_view' %}">Logout</a></li>
+                            <li><a class="dropdown-item" href="{% url 'accounts:change_password' %}">Change Password</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    {% else %}
+
+                    <li class="nav-item">
+                        <a class="nav-link navLink {% if request.resolver_match.url_name == 'home' %}active{% endif %}"
+                            aria-current="page" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle navLink {% if request.resolver_match.url_name == 'login_view' or request.resolver_match.url_name == 'register' %}active{% endif %}"
+                            href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Accounts
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'accounts:login_view' %}">Login</a></li>
+                            <li><a class="dropdown-item" href="{% url 'accounts:register' %}">Register</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link navLink {% if request.resolver_match.url_name == 'about' %}active{% endif %}"
+                            href="{% url 'about' %}">About</a>
+                    </li>
+
+                    {% endif %}
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    {% block body%}{% endblock %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

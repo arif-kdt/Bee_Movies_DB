@@ -1,0 +1,535 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.bgWrapper {
+  min-height: 100vh;
+  width: 100%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: #2c3e50;
+}
+
+/* Mobile background */
+@media (max-width: 600px) {
+  .bgWrapper {
+    background-attachment: scroll;
+    background-position: 40% center;
+  }
+}
+
+.navBar {
+  position: relative;
+  z-index: 1050;
+  background: linear-gradient(180deg, rgba(212, 175, 55, 0.16), rgba(212, 175, 55, 0.06));
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+  padding: 6px 0;
+}
+
+.navContainer {
+  position: relative;
+}
+
+@media (min-width: 992px) {
+  .navbar.navBar .navContainer .navbar-collapse {
+    display: flex !important;
+    position: absolute !important;
+    left: calc(50% + 20px) !important;
+    right: auto !important;
+    top: 50% !important;
+    transform: translate(0, -50%) !important;
+    flex-grow: 0 !important;
+    flex-basis: auto !important;
+  }
+}
+
+.navbar-brand.navLink {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: 0.02em;
+  border-bottom: none !important;
+}
+
+.navLinks {
+  gap: 8px;
+}
+
+.navLink {
+  color: #f2ede1 !important;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
+  padding: 8px 14px !important;
+  border-bottom: 2px solid transparent;
+  border-radius: 6px;
+}
+
+.navLink:hover {
+  background-color: rgba(212, 175, 55, 0.14);
+  color: #d4af37 !important;
+  font-weight: 500;
+}
+
+.navLink.active {
+  color: #d4af37 !important;
+  background-color: rgba(212, 175, 55, 0.1);
+  border-bottom: 2px solid #d4af37;
+}
+
+/* Dropdown menu matches the glass theme */
+.navLinks .dropdown-menu {
+  background: rgba(20, 18, 14, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 8px;
+  padding: 6px;
+}
+
+.navLinks .dropdown-item {
+  color: #f2ede1;
+  border-radius: 5px;
+  padding: 8px 12px;
+  font-size: 0.92rem;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.navLinks .dropdown-item:hover,
+.navLinks .dropdown-item:focus {
+  background-color: rgba(212, 175, 55, 0.15);
+  color: #d4af37;
+}
+
+.navbar-toggler {
+  border-color: rgba(212, 175, 55, 0.4) !important;
+}
+
+.navbar-toggler:focus {
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2) !important;
+}
+
+.navbar-toggler-icon {
+  filter: invert(72%) sepia(53%) saturate(500%) hue-rotate(1deg) brightness(102%);
+}
+
+/* ===== Responsive navbar ===== */
+@media (max-width: 991px) {
+  .navLinks {
+    gap: 2px;
+    padding-top: 10px;
+  }
+
+  .navLink {
+    padding: 10px 12px !important;
+  }
+
+  .navLink.active {
+    border-bottom: none;
+    border-left: 2px solid #d4af37;
+    border-radius: 4px;
+  }
+}
+
+
+/* =================================================================================================================== */
+/* ===================================================== Home ======================================================== */
+/* =================================================================================================================== */
+
+.landing-page {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 24px;
+}
+
+.landing-hero {
+  max-width: 680px;
+  text-align: center;
+  color: #f2ede1;
+  font-family: 'Inter', sans-serif;
+}
+
+.landing-eyebrow {
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  color: #8a8578;
+  margin: 0 0 14px;
+}
+
+.landing-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: clamp(2.2rem, 5.5vw, 3.6rem);
+  line-height: 1.15;
+  color: #f2ede1;
+  margin: 0 0 28px;
+}
+
+.landing-sprocket {
+  width: 220px;
+  margin: 0 auto 28px;
+}
+
+.landing-subtitle {
+  font-size: 1.08rem;
+  line-height: 1.7;
+  color: #cfc9ba;
+  max-width: 52ch;
+  margin: 0 auto 40px;
+}
+
+.landing-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.landing-btn {
+  display: inline-block;
+  padding: 13px 30px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.98rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: transform 0.25s ease, background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+.landing-btn--primary {
+  color: #0e0d0b;
+  background-color: #d4af37;
+  border: 2px solid #d4af37;
+}
+
+.landing-btn--primary:hover {
+  background-color: #f0c84b;
+  border-color: #f0c84b;
+  transform: translateY(-2px);
+}
+
+.landing-btn--ghost {
+  color: #d4af37;
+  background-color: transparent;
+  border: 2px solid rgba(212, 175, 55, 0.4);
+}
+
+.landing-btn--ghost:hover {
+  border-color: #d4af37;
+  background-color: rgba(212, 175, 55, 0.1);
+  transform: translateY(-2px);
+}
+
+/* ===== Responsive: mobile ===== */
+@media (max-width: 600px) {
+  .landing-page {
+    padding: 44px 20px;
+  }
+
+  .landing-subtitle {
+    font-size: 1rem;
+  }
+
+  .landing-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .landing-btn {
+    text-align: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-btn {
+    transition: none;
+  }
+}
+
+
+
+/* =================================================================================================================== */
+/* ==================================================== About ======================================================== */
+/* =================================================================================================================== */
+
+
+.about-page {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px 80px;
+}
+
+.about-shell {
+  max-width: 560px;
+  text-align: center;
+  color: #f2ede1;
+  font-family: 'Inter', sans-serif;
+}
+
+.about-eyebrow {
+  font-size: 0.9rem;
+  letter-spacing: 0.03em;
+  color: #8a8578;
+  margin: 0 0 6px;
+}
+
+.about-heading {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  color: #f2ede1;
+  margin: 0 0 24px;
+}
+
+.about-bio {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: #cfc9ba;
+  margin: 0 0 32px;
+}
+
+.about-bio strong {
+  color: #d4af37;
+  font-weight: 600;
+}
+
+.about-socials {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.about-social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  font-size: 1.3rem;
+  color: #d4af37;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 50%;
+  background: rgba(212, 175, 55, 0.08);
+  transition: transform 0.25s ease, background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.about-social-link:hover {
+  transform: translateY(-3px);
+  color: #0e0d0b;
+}
+
+.about-social-link.linkedin:hover {
+  background: #0077B5;
+  border-color: #0077B5;
+}
+
+.about-social-link.github:hover {
+  background: #f2ede1;
+  border-color: #f2ede1;
+}
+
+/* ===== Responsive: mobile ===== */
+@media (max-width: 600px) {
+  .about-page {
+    padding: 32px 20px 64px;
+  }
+
+  .about-bio {
+    font-size: 0.98rem;
+  }
+
+  .about-social-link {
+    width: 44px;
+    height: 44px;
+    font-size: 1.15rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-social-link {
+    transition: none;
+  }
+}
+
+
+
+/* =========================================================================================================================== */
+/* ============================================================= Auth Pages ================================================== */
+/* =========================================================================================================================== */
+
+/* ========================= AUTH CONTAINER ========================= */
+.auth-container {
+  width: 100%;
+  max-width: 450px;
+  margin-left: 60%;
+  margin-top: 120px;
+  margin-bottom: 80px;
+  transform: translateX(-50%);
+  padding: 40px;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.03);
+  color: white;
+}
+
+/* ========================= AUTH HEADING ========================= */
+.auth-container h1 {
+  color: #d4af37;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.auth-container h3 {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 1rem;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* ========================= FORM LABEL ========================= */
+.auth-container .form-label {
+  color: #d4af37;
+  font-weight: 500;
+  margin-bottom: 7px;
+}
+
+/* ========================= FORM INPUT ========================= */
+.auth-container .form-control {
+  height: 48px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  color: white;
+  padding: 10px 14px;
+  transition: all 0.3s ease;
+}
+
+/* Placeholder */
+.auth-container .form-control::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Input focus */
+.auth-container .form-control:focus {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #d4af37;
+  color: white;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+  outline: none;
+}
+
+/* ========================= PASSWORD FIELD ========================= */
+.password-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.password-wrapper .form-control {
+  padding-right: 50px;
+}
+
+/* Eye icon */
+.password-toggle {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #d4af37;
+  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 5;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.password-toggle:hover {
+  color: #f0c84b;
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* ========================= LOGIN BUTTON ========================= */
+.login-btn {
+  width: 100%;
+  background-color: #d4af37;
+  border: 2px solid #d4af37;
+  color: #000 !important;
+  font-weight: 600;
+  padding: 10px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+  background-color: #f0c84b;
+  border-color: #f0c84b;
+  color: #000 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(212, 175, 55, 0.25);
+}
+
+/* ========================= REGISTER TEXT ========================= */
+.register-text {
+  color: rgba(255, 255, 255, 0.75);
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 0;
+}
+
+.register-link {
+  color: #d4af37;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.register-link:hover {
+  color: #f0c84b;
+  text-decoration: underline;
+}
+
+/* ========================= AUTH RESPONSIVE ========================= */
+@media (max-width: 992px) {
+  .auth-container {
+    width: calc(100% - 40px);
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 80px;
+    margin-bottom: 60px;
+    transform: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .auth-container {
+    width: calc(100% - 30px);
+    padding: 30px 20px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border-radius: 15px;
+  }
+
+  .auth-container h1 {
+    font-size: 2rem;
+  }
+
+  .auth-container h3 {
+    font-size: 0.9rem;
+  }
+}

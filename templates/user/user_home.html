@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+
+<div class="home-page">
+
+    <header class="home-header">
+        <h1 class="home-title">Bee Movies Database</h1>
+        <p class="home-tagline">Discover your next favorite film</p>
+        <div class="home-sprocket" aria-hidden="true"></div>
+    </header>
+
+    {% if recent_movies %}
+    <section class="shelf">
+        <h2 class="shelf-heading">Recently Added</h2>
+        <div class="shelf-track">
+            {% for m in recent_movies %}
+            <a href="{% url 'user:user_movie_details' m.id %}" class="shelf-item">
+                {% if m.image %}
+                <img src="{{ m.image.url }}" alt="{{ m.name }}" class="shelf-poster">
+                {% else %}
+                <img src="{% static 'images/default.png' %}" alt="{{ m.name }}" class="shelf-poster">
+                {% endif %}
+                <span class="shelf-caption">{{ m.name }}</span>
+            </a>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
+    {% if latest_movies %}
+    <section class="shelf">
+        <h2 class="shelf-heading">Latest Movies</h2>
+        <div class="shelf-track">
+            {% for m in latest_movies %}
+            <a href="{% url 'user:user_movie_details' m.id %}" class="shelf-item">
+                {% if m.image %}
+                <img src="{{ m.image.url }}" alt="{{ m.name }}" class="shelf-poster">
+                {% else %}
+                <img src="{% static 'images/default.png' %}" alt="{{ m.name }}" class="shelf-poster">
+                {% endif %}
+                <span class="shelf-caption">{{ m.name }}</span>
+            </a>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,528 @@
+/* ============================================================ */
+/* ========================= Home ============================= */
+/* ============================================================ */
+
+.home-page {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 56px 32px 80px;
+}
+
+.home-header {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.home-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    color: #f2ede1;
+    margin: 0 0 10px;
+}
+
+.home-tagline {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: #8a8578;
+    margin: 0 auto 22px;
+}
+
+.home-sprocket {
+    height: 1px;
+    width: 180px;
+    margin: 0 auto;
+    background: repeating-linear-gradient(90deg,
+            rgba(212, 175, 55, 0.55) 0,
+            rgba(212, 175, 55, 0.55) 8px,
+            transparent 8px,
+            transparent 16px);
+}
+
+.shelf {
+    margin-bottom: 48px;
+}
+
+.shelf-heading {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.03em;
+    color: #d4af37;
+    margin: 0 0 18px;
+    padding-left: 4px;
+}
+
+.shelf-track {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 4px 4px 16px;
+    scroll-snap-type: x proximity;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(212, 175, 55, 0.4) transparent;
+}
+
+.shelf-track::-webkit-scrollbar {
+    height: 6px;
+}
+
+.shelf-track::-webkit-scrollbar-thumb {
+    background: rgba(212, 175, 55, 0.4);
+    border-radius: 3px;
+}
+
+.shelf-item {
+    flex: 0 0 auto;
+    width: 190px;
+    scroll-snap-align: start;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform 0.25s ease;
+}
+
+.shelf-item:hover {
+    transform: translateY(-6px);
+}
+
+.shelf-poster {
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    border-radius: 3px;
+    box-shadow: 0 12px 28px rgb(0 0 0 / 50%);
+    display: block;
+}
+
+.shelf-caption {
+    display: block;
+    margin-top: 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: #f2ede1;
+    line-height: 1.35;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+/* ===== Responsive: tablet ===== */
+@media (max-width: 900px) {
+    .home-page {
+        padding: 44px 20px 64px;
+    }
+
+    .shelf-item {
+        width: 160px;
+    }
+}
+
+/* ===== Responsive: mobile ===== */
+@media (max-width: 600px) {
+    .home-page {
+        padding: 32px 16px 56px;
+    }
+
+    .home-header {
+        margin-bottom: 36px;
+    }
+
+    .shelf {
+        margin-bottom: 36px;
+    }
+
+    .shelf-item {
+        width: 132px;
+    }
+
+    .shelf-track {
+        gap: 14px;
+        padding-bottom: 12px;
+    }
+
+    .shelf-caption {
+        font-size: 0.82rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .shelf-item {
+        transition: none;
+    }
+}
+
+
+/* ============================================================ */
+/* ===================== Movie Details ======================== */
+/* ============================================================ */
+
+.detail-page {
+    padding: 40px 24px 80px;
+}
+
+.detail-shell {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #a89a6d;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    text-decoration: none;
+    margin-bottom: 32px;
+    transition: color 0.25s ease;
+}
+
+.back-link:hover {
+    color: #d4af37;
+}
+
+.back-arrow {
+    transition: transform 0.25s ease;
+}
+
+.back-link:hover .back-arrow {
+    transform: translateX(-4px);
+}
+
+.detail-spread {
+    display: grid;
+    grid-template-columns: minmax(240px, 360px) 1fr;
+    gap: 56px;
+    align-items: start;
+}
+
+.detail-poster {
+    position: sticky;
+    top: 32px;
+}
+
+.poster-img {
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0 20px 50px rgb(0 0 0 / 55%);
+}
+
+.detail-credits {
+    color: #f2ede1;
+    font-family: 'Inter', sans-serif;
+    padding-top: 4px;
+}
+
+.credit-year {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    color: #8a8578;
+    margin: 0 0 6px;
+}
+
+.credit-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: clamp(2.1rem, 4vw, 3.2rem);
+    line-height: 1.1;
+    color: #f2ede1;
+    margin: 0 0 24px;
+}
+
+.credit-sprocket {
+    height: 1px;
+    width: 100%;
+    background: repeating-linear-gradient(90deg,
+            rgba(212, 175, 55, 0.55) 0,
+            rgba(212, 175, 55, 0.55) 8px,
+            transparent 8px,
+            transparent 16px);
+    margin-bottom: 28px;
+}
+
+.credit-list {
+    margin: 0 0 28px;
+}
+
+.credit-row {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.credit-row:first-child {
+    padding-top: 0;
+}
+
+.credit-row dt {
+    font-size: 0.8rem;
+    letter-spacing: 0.03em;
+    color: #8a8578;
+    font-weight: 500;
+}
+
+.credit-row dd {
+    margin: 0;
+    color: #f2ede1;
+    font-size: 1rem;
+}
+
+.director-link {
+    color: #d4af37;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.35);
+    transition: border-color 0.25s ease, color 0.25s ease;
+}
+
+.director-link:hover {
+    color: #f0c84b;
+    border-color: #f0c84b;
+}
+
+.genre-tags {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+}
+
+.genre-tags li {
+    font-size: 0.8rem;
+    color: #d4af37;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    border-radius: 3px;
+    padding: 4px 10px;
+}
+
+.credit-synopsis {
+    font-size: 1.02rem;
+    line-height: 1.7;
+    color: #cfc9ba;
+    max-width: 62ch;
+    margin: 0;
+}
+
+/* ===== Responsive: tablet ===== */
+@media (max-width: 900px) {
+    .detail-spread {
+        grid-template-columns: minmax(200px, 300px) 1fr;
+        gap: 36px;
+    }
+}
+
+/* ===== Responsive: mobile ===== */
+@media (max-width: 640px) {
+    .detail-page {
+        padding: 24px 18px 56px;
+    }
+
+    .detail-spread {
+        display: block;
+    }
+
+    .detail-poster {
+        position: static;
+        max-width: 260px;
+        margin: 0 auto 28px;
+    }
+
+    .credit-title {
+        font-size: clamp(1.7rem, 7vw, 2.2rem);
+    }
+
+    .credit-row {
+        grid-template-columns: 90px 1fr;
+        gap: 10px;
+        padding: 12px 0;
+    }
+
+    .credit-row dt {
+        font-size: 0.75rem;
+    }
+
+    .back-link {
+        margin-bottom: 22px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .back-arrow,
+    .back-link,
+    .director-link {
+        transition: none;
+    }
+}
+
+
+/* ============================================================ */
+/* ==================== Director Details ======================= */
+/* ============================================================ */
+
+.director-page {
+    padding: 40px 24px 80px;
+}
+
+.director-shell {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.director-spread {
+    display: grid;
+    grid-template-columns: minmax(200px, 280px) 1fr;
+    gap: 48px;
+    align-items: start;
+    margin-bottom: 56px;
+}
+
+.director-portrait-wrap {
+    position: sticky;
+    top: 32px;
+}
+
+.director-portrait {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 16px 40px rgb(0 0 0 / 50%);
+}
+
+.director-credits {
+    color: #f2ede1;
+    font-family: 'Inter', sans-serif;
+    padding-top: 8px;
+}
+
+.credit-eyebrow {
+    font-size: 0.9rem;
+    letter-spacing: 0.03em;
+    color: #8a8578;
+    margin: 0 0 6px;
+}
+
+.director-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.1;
+    color: #f2ede1;
+    margin: 0 0 20px;
+}
+
+.director-bio {
+    font-size: 1.02rem;
+    line-height: 1.75;
+    color: #cfc9ba;
+    max-width: 65ch;
+    margin: 0;
+    white-space: pre-line;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 48px 20px;
+    color: #8a8578;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.98rem;
+}
+
+/* ===== Responsive: tablet ===== */
+@media (max-width: 900px) {
+    .director-spread {
+        grid-template-columns: minmax(160px, 220px) 1fr;
+        gap: 32px;
+    }
+}
+
+/* ===== Responsive: mobile ===== */
+@media (max-width: 640px) {
+    .director-page {
+        padding: 24px 18px 56px;
+    }
+
+    .director-spread {
+        display: block;
+        margin-bottom: 40px;
+    }
+
+    .director-portrait-wrap {
+        position: static;
+        max-width: 180px;
+        margin: 0 auto 24px;
+    }
+
+    .director-name {
+        font-size: clamp(1.6rem, 7vw, 2.1rem);
+        text-align: center;
+    }
+
+    .credit-eyebrow {
+        text-align: center;
+    }
+
+    .credit-sprocket {
+        margin: 0 auto 20px;
+        max-width: 180px;
+    }
+
+    .director-bio {
+        text-align: left;
+    }
+}
+
+
+/* ============================================================ */
+/* ======================= Movies List =========================== */
+/* ============================================================ */
+
+.list-page {
+    padding: 48px 24px 80px;
+}
+
+.list-shell {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.shelf-heading--accent {
+    color: #f2ede1;
+    position: relative;
+    padding-left: 16px;
+}
+
+.shelf-heading--accent::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 2px;
+    bottom: 2px;
+    width: 3px;
+    background: #d4af37;
+    border-radius: 2px;
+}
+
+/* ===== Responsive: tablet ===== */
+@media (max-width: 900px) {
+    .list-page {
+        padding: 36px 20px 64px;
+    }
+}
+
+/* ===== Responsive: mobile ===== */
+@media (max-width: 600px) {
+    .list-page {
+        padding: 28px 16px 56px;
+    }
+}

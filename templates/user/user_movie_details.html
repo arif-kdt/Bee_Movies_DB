@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+<div class="detail-page">
+
+  <div class="detail-shell">
+
+    <a href="{% url 'user:user_home' %}" class="back-link">
+      <span class="back-arrow">←</span> Back
+    </a>
+
+    <article class="detail-spread">
+
+      <div class="detail-poster">
+        {% if movie.image %}
+        <img src="{{ movie.image.url }}" alt="{{ movie.name }} poster" class="poster-img">
+        {% else %}
+        <img src="{% static 'images/default.jpg' %}" alt="No poster available" class="poster-img">
+        {% endif %}
+      </div>
+
+      <div class="detail-credits">
+
+        <p class="credit-year">{{ movie.year }}</p>
+        <h1 class="credit-title">{{ movie.name }}</h1>
+
+        <div class="credit-sprocket" aria-hidden="true"></div>
+
+        <dl class="credit-list">
+          <div class="credit-row">
+            <dt>Director</dt>
+            <dd>
+              <a href="{% url 'user:user_director_details' movie.director.id %}" class="director-link">
+                {{ movie.director.name }}</a>
+            </dd>
+          </div>
+          <div class="credit-row">
+            <dt>Language</dt>
+            <dd>{{ movie.language }}</dd>
+          </div>
+          {% if movie.genres.all %}
+          <div class="credit-row">
+            <dt>Genres</dt>
+            <dd>
+              <ul class="genre-tags">
+                {% for genre in movie.genres.all %}
+                <li>{{ genre.name }}</li>
+                {% endfor %}
+              </ul>
+            </dd>
+          </div>
+          {% endif %}
+        </dl>
+
+        {% if movie.description %}
+        <p class="credit-synopsis">{{ movie.description }}</p>
+        {% endif %}
+
+      </div>
+
+    </article>
+
+  </div>
+
+</div>
+{% endblock %}

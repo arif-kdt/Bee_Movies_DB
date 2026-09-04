@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+<div class="landing-page">
+  <div class="landing-hero">
+
+    <p class="landing-eyebrow">Bee Movies Database</p>
+    <h1 class="landing-title">Every film worth remembering,<br>in one place.</h1>
+
+    <div class="credit-sprocket landing-sprocket" aria-hidden="true"></div>
+
+    <p class="landing-subtitle">
+      Browse Malayalam, Hindi, Tamil and English cinema, track directors and filmographies, and build your own watchlist.
+    </p>
+
+    <div class="landing-actions">
+      <a href="{% url 'accounts:register' %}" class="landing-btn landing-btn--primary">Create an account</a>
+      <a href="{% url 'accounts:login_view' %}" class="landing-btn landing-btn--ghost">Log in</a>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}
